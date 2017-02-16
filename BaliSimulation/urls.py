@@ -23,5 +23,10 @@ from bali import views
 
 urlpatterns = [
     url(r'^$',views.index,name="index"),
+    url(r'^faq/$',views.faq,name="faq"),
+    url(r'^intro/$',views.intro,name="intro"),
+    url(r'^operation/$',views.operation,name="operation"),
+    url(r'^readBalise/$',views.readBalise,name="readBalise"),
+    url(r'^test/$',views.test,name="test"),
     url(r'^admin/', admin.site.urls),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
