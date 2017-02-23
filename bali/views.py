@@ -21,4 +21,7 @@ def readBalise(request):
 def test(request):
     return render(request,'bali/test.html',{})
 
+def about(request):
+    return render(request,'bali/about.html',{})
+
 
