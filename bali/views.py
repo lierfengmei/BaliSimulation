@@ -18,6 +18,27 @@ def operation(request):
 def readBalise(request):
     return render(request,'bali/readBalise.html',{})
 
+def writeBalise(request):
+    return render(request,'bali/writeBalise.html',{})
+
+def readLEU(request):
+    return render(request,'bali/readLEU.html',{})
+
+def writeLEU(request):
+    return render(request,'bali/writeLEU.html',{})
+
+def generateTelegram(request):
+    return render(request,'bali/generateTelegram.html',{})
+
+def analysizeTelegram(request):
+    return render(request,'bali/analysizeTelegram.html',{})
+
+def testBaliseSwitch(request):
+    return render(request,'bali/testBaliseSwitch.html',{})
+
+def testBaliseNoSwitch(request):
+    return render(request,'bali/testBaliseNoSwitch.html',{})
+
 def test(request):
     return render(request,'bali/test.html',{})
 

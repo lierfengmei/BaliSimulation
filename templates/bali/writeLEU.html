@@ -1,0 +1,50 @@
+{% extends "bali/base.html"%}
+
+{% load static %}
+
+{% block body_block %}
+<div class="container aboutSection">
+    <div class="row">
+      <div class=" col-sm-6">
+        <h1><span>1.选择接口种类</span></h1>
+        <div class="radio">
+          <label>
+            <input type="radio" name="opetionsRadios" id="opetionsRadios1" value="option1" checked>A4接口
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">A5接口
+          </label>
+        </div>
+      </div>
+
+      <div class=" col-sm-6">
+        <h1><span>2.报文读取内容</span></h1>
+        <form role="form">
+          <div class="form-group">
+            <label for="name">读取的报文</label>
+            <textarea class="form-control" rows="8"></textarea>
+            <button type="submit" class="btn btn-default">读取报文</button>
+          </div>
+        </form>  
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=" col-sm-6">
+        <h1><span>3.报文读取结果</span></h1>
+        <form role="form">
+          <div class="form-group">
+            <label for="name">报文读取结果</label>
+            <textarea class="form-control" rows="1"></textarea>
+          </div>
+        </form>  
+      </div>
+      <div class=" col-sm-6">
+        <h1><span>4.选择对比的报文</span></h1>
+        <form class="form-inline" role="form">
+          <div class="form-group">
+            <label class="sr-only" for="name">名称</label>
+            <input type="text" class="form-control" id="name" placeholder="请输入名称">
+{% endblock %}
