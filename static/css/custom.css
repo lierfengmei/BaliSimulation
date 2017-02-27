@@ -10,8 +10,8 @@
       margin: auto;
     }
     
-    .homePageIconDiv h2 {
-      font-weight: 50;
+    .homePageIconDiv h1 {
+      font-weight: 100;
       font-size: 33px;
     }
     
@@ -284,9 +284,9 @@
       margin-bottom: 80px;
     }
     
-    .aboutSection div > h2 {
+    .aboutSection div > h1 {
       border-bottom: 2px #ff9700 solid;
-      font-weight: 50;
+      font-weight: 100;
       padding-bottom: 10px;
       width: 285px;
     }
@@ -338,8 +338,8 @@
       margin-left: auto;
       margin-right: auto;
     }
-    .candoRow h2{
-      font-weight: 50;
+    .candoRow h1{
+      font-weight: 100;
       font-size: 33px;
     }
     .candoRow p {

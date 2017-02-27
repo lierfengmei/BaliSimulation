@@ -4,4 +4,82 @@
 
 {% block body_block %}
 
+<div class="container aboutSection">
+    <div class="row">
+        <div class=" col-sm-12">
+        <h1><span>1.模拟列控中心发送报文</span></h1>
+        <h3><span>选取列控中心报文(模拟列控中心)</span></h3>
+        <form class="form-inline" role="form">
+          <div class="form-group">
+              <span>通路1</span>
+            <label class="sr-only" for="name">名称</label>
+            <input type="text" class="form-control" id="name" placeholder="选取通路1报文">
+            </input>
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="inputfile">文件输入</label>
+            <input type="file" id="inputfile">
+            </input>
+          </div>
+        </form>
+          <br/>
+          <form class="form-inline" role="form">
+         <div class="form-group">
+              <span>通路2</span>
+
+            <label class="sr-only" for="name">名称</label>
+            <input type="text" class="form-control" id="name" placeholder="选取通路2报文">
+            </input>
+             </div>
+          <div class="form-group">
+            <label class="sr-only" for="inputfile">文件输入</label>
+            <input type="file" id="inputfile">
+            </input>
+          </div>
+            </form>
+
+          <br/>
+     <form class="form-inline" role="form">
+      
+     <div class="form-group">
+     <span>通路3</span>
+            <label class="sr-only" for="name">名称</label>
+            <input type="text" class="form-control" id="name" placeholder="选取通路3报文">
+            </input> 
+     </div>
+          <div class="form-group">
+            <label class="sr-only" for="inputfile">文件输入</label>
+            <input type="file" id="inputfile">
+          </div>
+          <br/>
+          <br/>
+      <div class="form-group">
+     <span>通路4</span>
+            <label class="sr-only" for="name">名称</label>
+            <input type="text" class="form-control" id="name" placeholder="选取通路4报文">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="inputfile">文件输入</label>
+            <input type="file" id="inputfile">
+          </div>
+          <br/>
+          <br/>
+          <br/>
+        </form>
+      </div> 
+      <br/>
+      <br/>
+
+      <div class=" col-sm-12">
+        <form role="form">
+          <div class="form-group">
+            <label for="name">读模拟列控中心发送的报文</label>
+            <textarea class="form-control" rows="8"></textarea>
+          </div>
+        </form>  
+      
+ <button type="submit" class="btn btn-default">开始模拟</button>
+ <button type="submit" class="btn btn-default">结束模拟</button>
+      </div>
+
 {% endblock %}
