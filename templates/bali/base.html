@@ -41,8 +41,7 @@
 </head>
 
 
-<!--body style="overflow-y: hidden;"-->
-<body>
+<body style="overflow-y: hidden;">
 
   <script src="{% static "js/jquery.min.js" %}"></script>
   <script src="{% static "js/bootstrap.min.js" %}"></script>
@@ -178,20 +177,17 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="{% url "index" %}">主页</a></li>
             <li><a href="{% url "test" %}">测试系统</a></li>
-          <li class="dropdown">
+          <!--li class="dropdown">
               <a href="{% url "test" %}" class="dropdown-toggle" data-toggle="dropdown">测试系统<strong class="caret"></strong></a>
               <ul class="dropdown-menu">
                 <li>
-                    <!--a href="{ url "testBaliseNoSwitch"%}">应答器测试（不切换报文）</a-->
-                    lkindfas
+                    <a href="{ url "testBaliseNoSwitch"%}">应答器测试（不切换报文）</a>
                 </li>
                 <li>
-                    <!--a href="{ url "testBaliseSwitch"%}">应答器测试（切换报文）</a-->
-                    fsjalfjla
+                    <a href="{ url "testBaliseSwitch"%}">应答器测试（切换报文）</a>
                 </li>
                 <li class="divider"></li>
-
-                <!--li>
+                <li>
                     <a href="{ url "generateTelegram" %}">应答器报文生成</a>
                 </li>
                 <li>
@@ -213,9 +209,9 @@
                 </li>
                 <li>
                     <a href="{ url "writeLEU" %}">LEU报文写入</a>
-                </li-->
+                </li>
               </ul>
-            </li>
+            </li-->
 
             <li><a href="{% url "intro" %}">系统介绍</a></li>
           <li><a href="{% url "operation" %}">测试说明</a></li>

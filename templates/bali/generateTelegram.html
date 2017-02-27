@@ -1,7 +1,66 @@
-{% extends "bali/base.html"%}
-
+{% extends "bali/base.html" %}
 {% load static %}
 
 {% block body_block %}
 
+<style type="text/css">
+    h1 {font-size:20px;}
+</style>
+
+  <div class="container aboutSection">
+    <div class="row">
+      <div class=" col-sm-12">
+        <h1><span>1.应答器组设置</span></h1>
+      </div>
+      <div class="col-sm-4">
+        <label>区间反向中继应答器组[FQ]</label>
+        <div class="radio">
+          <label>
+            <input type="radio" name="opetionsRadios" id="opetionsRadios1" value="option1" checked>使用默认值
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">自定义设置
+          </label>
+          <br/>
+           <button type="submit" class="btn btn-default">应答器链接ETC-5设置</button>
+           <br/>     <br/> <button type="submit" class="btn btn-default">线路坡度ETCS-21设置</button>
+           <br/><br/> <button type="submit" class="btn btn-default">线路速度ETCS-27设置</button>
+           <br/><br/> <button type="submit" class="btn btn-default">轨道区段CTCS-1设置</button>
+        </div>
+        </div>
+        <div class="col-sm-4">
+        <label>定位应答器组设置[DW]</label>
+        <div class="radio">
+          <label>
+            <input type="radio" name="opetionsRadiosTwo" id="optionsRadios1" value="option1" checked>使用默认值
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadiosTwo" id="optionsRadios2" value="option2">自定义设置
+          </label>
+          <br/> <button type="submit" class="btn btn-default">应答器链接ETC-5设置</button>
+          <br/><br/> <button type="submit" class="btn btn-default">线路坡度ETCS-21设置</button>
+          <br/><br/> <button type="submit" class="btn btn-default">线路速度ETCS-27设置</button>
+          <br/><br/> <button type="submit" class="btn btn-default">轨道区段CTCS-1设置</button>
+        </div>
+      </div>
+    <div class="col-sm-4">
+     <label>其他使用默认设置</label>
+     <br/><br/>
+     <br/><br/> <button type="submit" class="btn btn-default">生成报文</button>
+    </div> 
+      <div class=" col-sm-12">
+        <h1><span>2.生成的报文</span></h1>
+        <form role="form">
+          <div class="form-group">
+            <textarea class="form-control" rows="6"></textarea>
+          </div>
+        </form>  
+      </div>
+    </div>
+    <br/>
+  </div>
 {% endblock %}

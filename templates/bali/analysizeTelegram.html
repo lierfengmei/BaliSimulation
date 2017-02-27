@@ -1,7 +1,75 @@
-{% extends "bali/base.html"%}
-
+{% extends "bali/base.html" %}
 {% load static %}
 
 {% block body_block %}
 
+<style type="text/css">
+    h1 {font-size:20px;}
+</style>
+
+  <div class="container aboutSection">
+    <div class="row">
+      <div class=" col-sm-6">
+        <h1><span>1.提取报文</span></h1>
+        <div class="radio">
+          <label>
+            <input type="radio" name="opetionsRadios" id="opetionsRadios1" value="option1" checked>A4接口
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">A5接口
+          </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">选择本地报文
+         <form class="form-inline" role="form">
+          <div class="form-group">
+            <label class="sr-only" for="name">名称</label>
+            <input type="text" class="form-control" id="name" placeholder="请选择本地报文">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="inputfile">文件输入</label>
+            <input type="file" id="inputfile">
+          </div>
+        </form>
+        </input>
+            </label>
+        </div>
+
+            <button type="submit" class="btn btn-default">提取报文</button>
+            <br/>
+            <br/>
+            <form role="form">
+          <div class="form-group">
+            <label for="name">提取的报文</label>
+            <textarea class="form-control" rows="8"></textarea>
+          </div>
+        </form>  
+            </div>
+
+
+      <div class=" col-sm-6">
+        <h1><span>2.解析报文</span></h1>
+ 
+           <form role="form">
+          <div class="form-group">
+            <label for="name">需要解析的报文</label>
+            <textarea class="form-control" rows="8"></textarea>
+            <br/>
+            <button type="submit" class="btn btn-default">解析报文</button>
+          </div>
+        </form>  
+        <form role="form">
+          <div class="form-group">
+            <label for="name">报文解析的结果</label>
+            <textarea class="form-control" rows="8"></textarea>
+          </div>
+        </form>  
+      </div>
+    </div>
+
+    <br/>
+  </div>
 {% endblock %}
