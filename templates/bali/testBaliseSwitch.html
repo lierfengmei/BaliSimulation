@@ -4,4 +4,67 @@
 
 {% block body_block %}
 
+<style type="text/css">
+    h1 {font-size:20px;}
+</style>
+
+
+<div class="container aboutSection">
+    <div class="row">
+        <div class=" col-sm-12">
+        <h1><span>1.模拟列控中心发送报文</span></h1>
+        <form role="form">
+          <div class="form-group">
+            <label for="name">读模拟列控中心发送的报文</label>
+            <textarea class="form-control" rows="6"></textarea>
+          </div>
+        </form>  
+        <div class="row"> 
+        <div class="col-sm-6">
+            <button type="submit" class="btn btn-default">开始模拟</button>
+        </div>
+        <div class="col-sm-6">
+            <button type="submit" class="btn btn-default">结束模拟</button>
+        </div>
+        </div>
+            
+ <span><h1>2.模拟车载天线接收报文</h1></span>
+ <div class="row">
+     <div class="col-sm-6">
+ <span><h3>读取报文（模拟车载天线）</h3></span>
+ <span><h5>1.默认A4读取;</h5></span>
+ <span><h5>2.默认循环读取，时间间隔为1s。</h5></span>
+     </div>
+     <div class="col-sm-6">
+        <form role="form">
+          <div class="form-group">
+            <label for="name">从应答器读取的报文</label>
+            <textarea class="form-control" rows="6"></textarea>
+          </div>
+        </form>  
+        <div class="row">
+        <div class="col-sm-6">
+<button type="submit" class="btn btn-default">开始模拟</button>
+        </div>
+        <div class="col-sm-6">
+<button type="submit" class="btn btn-default">结束模拟</button>
+        </div>
+        </div>
+ </div>
+<span><h1>3.一致性校验（通路1）</h1></span>
+    <form role="form">
+        <div class="form-group">
+            <label for="name">校验结果</label>
+            <div class="form-inline">
+            <textarea class="form-control" rows="1"></textarea>
+            <button type="submit" class="btn btn-default">开始校验</button>
+          </div>
+          </div>
+        </form>  
+      
+ 
+      </div>
+      </div>
+      </div>
+
 {% endblock %}
