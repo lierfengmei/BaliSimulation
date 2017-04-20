@@ -5,3 +5,6 @@ class AddForm(forms.Form):
     b = forms.IntegerField()
 #    c = forms.IntegerField()
 
+
+class ExtractForm(forms.Form)
+    

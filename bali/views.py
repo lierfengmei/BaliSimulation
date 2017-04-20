@@ -2,6 +2,20 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .forms import AddForm
+from .forms import ExtractForm
+
+
+def extract_tele(request):
+    if request.method == 'post':
+        form = ExtractForm(request.POST)
+        if form.is_valid():
+            # todo ! to modify
+            extract_tele = "This is default telegram"
+            return render(request,'bali/analysizeTelegram',{'extract_tele':extract_tele,'form':form})
+    else:
+        form = ExtractForm()
+    return render(request,'bali/analysizeTelegram',{'form':form})
+
 
 
 
