@@ -5,7 +5,9 @@ class AddForm(forms.Form):
     b = forms.IntegerField()
 #    c = forms.IntegerField()
 
-
+# in analysizeTelegram.html
 class ExtractForm(forms.Form):
-    c = forms.IntegerField()
-    
+    A4 = BooleanField()
+    A5 = BooleanField()
+    LocalFile = BooleanField()
+    filepath = forms.FilePathField()

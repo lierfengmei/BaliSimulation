@@ -4,6 +4,27 @@ from django.http import HttpResponse
 from .forms import AddForm
 from .forms import ExtractForm
 
+#in analysizeTelegram.html, to extract and analysize the telegram
+def myextract_tele(request):
+    if request.method =='post':
+        form = ExtractForm(request.POST)
+        if form.is_valid():
+            isA4 = 
+            isA5 = 
+            isLocalFile = 
+            
+    else:
+        form = ExtractForm()
+    return render(request,'bali/analysizeTelegram.html',{'form':form})
+
+
+
+
+
+
+
+
+
 
 def extract_tele(request):
     if request.method == 'post':
