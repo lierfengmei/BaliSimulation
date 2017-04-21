@@ -6,5 +6,6 @@ class AddForm(forms.Form):
 #    c = forms.IntegerField()
 
 
-class ExtractForm(forms.Form)
+class ExtractForm(forms.Form):
+    c = forms.IntegerField()
     

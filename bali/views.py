@@ -11,26 +11,37 @@ def extract_tele(request):
         if form.is_valid():
             # todo ! to modify
             extract_tele = "This is default telegram"
-            return render(request,'bali/analysizeTelegram',{'extract_tele':extract_tele,'form':form})
+            return render(request,'bali/analysizeTelegram.html',{'extract_tele':extract_tele,'form':form})
     else:
         form = ExtractForm()
-    return render(request,'bali/analysizeTelegram',{'form':form})
+    return render(request,'bali/analysizeTelegram.html',{'form':form})
 
-
-
+def show_data(request):
+    if request.method == 'post':
+        show_data = "This is the second default show data"
+    else:
+        form = ExtractForm()
+    return render(request,'bali/readBalise.html',)
 
 def index(request):
+    return render(request,'bali/index.html',{})
+
+
+def add(request):
+  #  show_data = "This is my default show data"
     if request.method == 'POST':#提交表单时
-        form = AddForm(request.POST) #form包含提交的数据
-        if form.is_valid():
-            a = form.cleaned_data['a']
-            b = form.cleaned_data['b']
+        myform = AddForm(request.POST) #form包含提交的数据
+        if myform.is_valid():
+            a = myform.cleaned_data['a']
+            b = myform.cleaned_data['b']
             data = str(int(a)+int(b))
-            return render(request,'bali/readBalise.html',{'data':data,'form':form})
+    #        return render(request,'bali/readBalise.html',{'data':data,'myform':myform,'show_data':show_data})
+            return render(request,'bali/readBalise.html',{'data':data,'myform':myform})
             #return HttpResponse(str(int(a)+int(b)))
     else:#当正常访问时
-        form = AddForm()
-    return render(request,'bali/readBalise.html',{'form':form})
+        myform = AddForm()
+    #return render(request,'bali/readBalise.html',{'myform':myform,'show_data':show_data})
+    return render(request,'bali/readBalise.html',{'myform':myform})
 
 
 def faq(request):

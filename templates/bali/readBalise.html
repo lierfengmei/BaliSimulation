@@ -7,16 +7,37 @@
     h1 {font-size:20px;}
 </style>
 
+
+<script type="text/JavaScript">
+<!--
+ function ShowData()
+{
+  document.getElementById('showdataID').value='123456';
+}
+-->
+</script>
+
+
+
   <div class="container aboutSection">
     <div class="row">
       <div class=" col-sm-6">
         <h1><span>1.选择接口种类</span></h1>
         <form method='post'>
           {%csrf_token %}
-          {{form}}
+          {{myform}}
           <input type="submit" value="提交">
         </form>
         <div> This is the sum: {{data}}</div>
+    
+
+          
+        <input type="submit" value="显示" onclick="return ShowData();">
+        <textarea class="form-control" rows="8" id="showdataID"></textarea>
+
+
+
+
 
 
         <div class="radio">
