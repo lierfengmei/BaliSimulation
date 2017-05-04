@@ -7,26 +7,45 @@
     h1 {font-size:20px;}
 </style>
 
+
+<script type="text/javascript" >
+function baidu(){
+  var radios = document.getElementsByName("optionsRadios");
+  for ( var i = 0; i < radios.length; i++ ) {
+   if (radios[i].checked==true) {
+         i++;
+      alert("你选中的是第"+i+"个单选框。值为："+radios[--i].value);
+   }
+   }
+}
+</script>
+
+{{option}}
+{% with option=A5choice %}
+{% endwith %}
+
+
   <div class="container aboutSection">
     <div class="row">
       <div class=" col-sm-6">
         <h1><span>0.选择报文</span></h1>
-         <form class="form-inline" role="form">
+         <form class="form-inline" role="form" method='post'>
+           {%csrf_token%}
         <div class="radio">
           <label>
-            <input type="radio" name="optionsRadios" id="opetionsRadios1" value="option1">A4接口
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="A4接口">A4接口
           </label>
         </div>
         <br/>
         <div class="radio">
           <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">A5接口
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="A5接口">A5接口
           </label>
         </div>
         <br/>
         <div class="radio">
             <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">选择本地报文
+                <input type="radio" name="optionsRadios" id="optionsRadios3" value="本地文件">选择本地报文
           <div class="form-group">
             <label class="sr-only" for="name">名称</label>
             <input type="text" class="form-control" id="name" placeholder="请选择本地报文">
@@ -36,7 +55,7 @@
         </div>
           <br/>
           <br/>
-          <input type="submit" value="提取并解析报文">
+          <input type="submit" onClick="baidu()" value="提取并解析报文">
         </form>
         </input>
             </label>
@@ -47,7 +66,7 @@
           <div>
         <h1><span>1.提取报文</span></h1>
             <label for="name">提取的报文</label>
-            <textarea class="form-control"  rows="8">{{extract_tele}}</textarea>
+            <textarea class="form-control"  rows="8">{{choice}}</textarea>
           </div>
             </div>
 
