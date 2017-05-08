@@ -88,12 +88,14 @@ def writeBalise(request):
 
 def writeTele(request):
     write_tele = request.GET['write_tele']
+    # todo!这个地方处理传过来的write_tele写入报文，然后往下位机写入报文，
+    # 根据写入是否成功，来向网页前端传送是否写入成功的标志！
     if write_tele:
-        result = "Write Telegram Success!"
+        writeResult = write_tele+"\nWrite Telegram Success!"
     else:
-        result = "Write Telegram Failed!"
-    return HttpResponse(result)
-
+        writeResult = write_tele+"\n Write Telegram Failed!"
+    return HttpResponse(writeResult)
+#----------------------------------------------------
 
 
 

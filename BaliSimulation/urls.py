@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^readBalise/$',views.readBalise,name="readBalise"),
 
     url(r'^writeBalise/$',views.writeBalise,name="writeBalise"),
-    url(r'^writeBalise/writeTele$',views.writeTele,name="writeTele"),
+    url(r'^writeBalise/writeTele/$',views.writeTele,name="writeBalise/writeTele"),
 
     url(r'^about/$',views.about,name="about"),
     url(r'^readLEU/$',views.readLEU,name="readLEU"),

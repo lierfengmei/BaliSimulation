@@ -9,7 +9,7 @@
 </style>
 
           
-          <input type="file" onchange="upload(this)"/>
+<input type="file" onchange="upload(this)"/>
 
   <div class="container aboutSection">
     <div class="row">
@@ -27,11 +27,11 @@
         </form>
 
         <h1><span>2.需要写入的报文内容</span></h1>
-        <form role="form">
+        <form role="form" action="/writeBalise/writeTele/">
           <div class="form-group">
             <label for="name">写入的报文</label>
-            <textarea id="writeData" class="form-control" rows="8">{{write_tele}}</textarea>
-            <button type="submit" id="writeBtn" class="btn btn-default">写入报文</button>
+            <textarea id="write_tele" class="form-control" rows="4"></textarea>
+            <button type="button" id="writeBtn" class="btn btn-default">写入报文</button>
           </div>
         </form>  
 
@@ -39,7 +39,7 @@
         <form role="form">
           <div class="form-group">
             <label for="name">报文写入结果</label>
-            <textarea class="form-control" rows="1"></textarea>
+            <textarea id="writeResult" readonly="readonly" class="form-control" rows="5"></textarea>
           </div>
         </form>  
         </div>
@@ -51,27 +51,16 @@
     $(document).ready(function()
     {
       //求和a+b 
-      $("#sum").click(function()
+      $("#writeBtn").click(function()
       {
-        var a = $("#a").val();
-        var b = $("#b").val();
+        var write_tele = $("#write_tele").val();
 
-        $.get("/add/",{'a':a,'b':b}, function(ret)
+        $.get("/writeBalise/writeTele/",{'write_tele':write_tele}, function(ret)
             {
-            $('#result').html(ret)
+            $('#writeResult').html(ret)
             })
        });
-  
-  //字典dict
-  $('#dict').click(function()
-      {$.getJSON("{% url 'ajax-dict'%}",function(ret)
-          {
-            //返回ret在这里是一个字典
-            $('#dict_result').append(ret.twz+'<br/>');
-          })
 
-      })
-　
     });
 </script>
 
@@ -86,8 +75,8 @@ function upload(input) {
         reader.onload = function() 
         {  
         console.log(this.result)  
-        document.getElementById("writeData").value=this.result;
-        alert(this.result);  
+        document.getElementById("write_tele").value=this.result;
+       // alert(this.result);  
         }  
         reader.readAsText(file);  
     }   
@@ -98,8 +87,8 @@ function upload(input) {
       xmlDoc = new ActiveXObject("Microsoft.XMLDOM");   
       xmlDoc.async = false;   
       xmlDoc.load(input.value);   
-      alert(xmlDoc.xml);   
-      document.getElementById("writeData").value=xmlDoc.xml;
+     // alert(xmlDoc.xml);   
+      document.getElementById("write_tele").value=xmlDoc.xml;
    }
                 //支持FF  
    else if (document.implementation && document.implementation.createDocument)
@@ -108,7 +97,8 @@ function upload(input) {
            xmlDoc = document.implementation.createDocument("", "", null);   
            xmlDoc.async = false;   
            xmlDoc.load(input.value);   
-           alert(xmlDoc.xml);  
+           document.getElementById("write_tele").value=xmlDoc.xml;
+         //  alert(xmlDoc.xml);  
    } 
    else 
    {   
