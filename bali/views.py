@@ -79,8 +79,23 @@ def operation(request):
 def readBalise(request):
     return render(request,'bali/readBalise.html',{})
 
+#----------写入报文处理函数--------------------------
 def writeBalise(request):
+   # json_receive = json.loads(request.body)
+   # name = json_receive['name']
+   # age = json_receive['age']
     return render(request,'bali/writeBalise.html',{})
+
+def writeTele(request):
+    write_tele = request.GET['write_tele']
+    if write_tele:
+        result = "Write Telegram Success!"
+    else:
+        result = "Write Telegram Failed!"
+    return HttpResponse(result)
+
+
+
 
 def readLEU(request):
     return render(request,'bali/readLEU.html',{})

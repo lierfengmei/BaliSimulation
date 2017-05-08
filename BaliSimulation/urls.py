@@ -26,7 +26,10 @@ urlpatterns = [
     url(r'^intro/$',views.intro,name="intro"),
     url(r'^operation/$',views.operation,name="operation"),
     url(r'^readBalise/$',views.readBalise,name="readBalise"),
+
     url(r'^writeBalise/$',views.writeBalise,name="writeBalise"),
+    url(r'^writeBalise/writeTele$',views.writeTele,name="writeTele"),
+
     url(r'^about/$',views.about,name="about"),
     url(r'^readLEU/$',views.readLEU,name="readLEU"),
     url(r'^writeLEU/$',views.writeLEU,name="writeLEU"),
