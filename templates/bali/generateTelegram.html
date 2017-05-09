@@ -7,6 +7,14 @@
     h1 {font-size:20px;}
 </style>
 
+<script type="text/JavaScript">
+ function generate()
+{
+  document.getElementById('generateTelegram').value='CB 64 F1 D8 EA C4 C6 F9 F0 A9 0E D2 71 DB 52 6F C0 82 1E B6 3A 65 F7 76 C1 34 EB D1 A1 03 1C 0F AA 2E 0D AA 52 E4 EB E0 C0 76 79 8C 09 5B 6A 81 EC F3 4E 69 12 B9 55 09 96 41 83 31 0B 79 24 03 E7 A6 70 A9 BB C6 CB A2 D2 AF 86 1F 99 BC 99 48 77 C5 B9 E0 5A AF 8C BC ED 34 88 C5 89 2B 10 78 9E 09 3A A8 B2 6F 4A C1 5A C8 9A 57 F2 CF D3 41 18 F2 10 14 B3 C7 57 4F BC 47 CF CF D9 41 4D B8';
+}
+</script>
+
+
   <div class="container aboutSection">
     <div class="row">
       <div class=" col-sm-12">
@@ -16,47 +24,48 @@
         <label>区间反向中继应答器组[FQ]</label>
         <div class="radio">
           <label>
-            <input type="radio" name="opetionsRadios" id="opetionsRadios1" value="option1" checked>使用默认值
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>使用默认值
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">自定义设置
+            <input type="radio"disabled="disabled" name="optionsRadios" id="optionsRadios2" value="option2">自定义设置
           </label>
           <br/>
-           <button type="submit" class="btn btn-default">应答器链接ETC-5设置</button>
-           <br/>     <br/> <button type="submit" class="btn btn-default">线路坡度ETCS-21设置</button>
-           <br/><br/> <button type="submit" class="btn btn-default">线路速度ETCS-27设置</button>
-           <br/><br/> <button type="submit" class="btn btn-default">轨道区段CTCS-1设置</button>
+           <button type="submit" disabled="disabled" class="btn btn-default">应答器链接ETC-5设置</button>
+           <br/>     <br/> <button type="submit" disabled="disabled" class="btn btn-default">线路坡度ETCS-21设置</button>
+           <br/><br/> <button type="submit" disabled="disabled" class="btn btn-default">线路速度ETCS-27设置</button>
+           <br/><br/> <button type="submit" disabled="disabled" class="btn btn-default">轨道区段CTCS-1设置</button>
         </div>
         </div>
         <div class="col-sm-4">
         <label>定位应答器组设置[DW]</label>
         <div class="radio">
           <label>
-            <input type="radio" name="opetionsRadiosTwo" id="optionsRadios1" value="option1" checked>使用默认值
+            <input type="radio" name="optionsRadiosTwo" id="optionsRadios1" value="option1" checked>使用默认值
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="optionsRadiosTwo" id="optionsRadios2" value="option2">自定义设置
+            <input type="radio" name="optionsRadiosTwo" disabled="disabled" id="optionsRadios2" value="option2">自定义设置
           </label>
-          <br/> <button type="submit" class="btn btn-default">应答器链接ETC-5设置</button>
-          <br/><br/> <button type="submit" class="btn btn-default">线路坡度ETCS-21设置</button>
-          <br/><br/> <button type="submit" class="btn btn-default">线路速度ETCS-27设置</button>
-          <br/><br/> <button type="submit" class="btn btn-default">轨道区段CTCS-1设置</button>
+          <br/> <button type="submit" disabled="disabled" class="btn btn-default">应答器链接ETC-5设置</button>
+          <br/><br/> <button type="submit" disabled="disabled" class="btn btn-default">线路坡度ETCS-21设置</button>
+          <br/><br/> <button type="submit" disabled="disabled" class="btn btn-default">线路速度ETCS-27设置</button>
+          <br/><br/> <button type="submit" disabled="disabled" class="btn btn-default">轨道区段CTCS-1设置</button>
         </div>
       </div>
     <div class="col-sm-4">
      <label>其他使用默认设置</label>
      <br/><br/>
-     <br/><br/> <button type="submit" class="btn btn-default">生成报文</button>
+     <br/><br/> <button type="button" id="generateTele" class="btn btn-default" onclick="generate()">生成默认报文</button>
+     <br/><br/> <button type="button" disabled="disabled" class="btn btn-default">生成自定义报文(暂不可用)</button>
     </div> 
       <div class=" col-sm-12">
         <h1><span>2.生成的报文</span></h1>
         <form role="form">
           <div class="form-group">
-            <textarea class="form-control" rows="6"></textarea>
+            <textarea class="form-control"id="generateTelegram" readonly="readonly" rows="6"></textarea>
           </div>
         </form>  
       </div>
