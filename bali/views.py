@@ -3,21 +3,6 @@ from django.http import HttpResponse
 
 from .forms import AddForm
 from .forms import ExtractForm
-
-#in analysizeTelegram.html, to extract and analysize the telegram
-#def myextract_tele(request):
-#    if request.method =='post':
-#        form = ExtractForm(request.POST)
-#        if form.is_valid():
-#            isA4 = False     
-#            isA5 = False 
-#            isLocalFile = True  
-#            filepath = "e://read.txt" #modify            
-#    else:
-#        form = ExtractForm()
-#    return render(request,'bali/analysizeTelegram.html',{'form':form})
-
-
 def extract_tele(request):
     if request.method == 'post':
         form = ExtractForm(request.POST)
@@ -108,29 +93,68 @@ def writeLEU(request):
 def generateTelegram(request):
     return render(request,'bali/generateTelegram.html',{})
 
-def analysizeTelegram1(request):
-    if request.method =='post':
-        form = ExtractForm(request.POST)
-        if form.is_valid():
-            isA4 = form.cleaned_data['optionsRadios1']    
-            isA5 = form.cleaned_data['option2']
-            isLocalFile = form.cleaned_data['option3']  
-            filepath = "e://read.txt" #modify            
-    else:
-        form = ExtractForm()
-    return render(request,'bali/analysizeTelegram.html',{'form':form})
-
+#----------------解析报文处理函数-----------------------
 def analysizeTelegram(request):
-    if request.method == 'POST':
-       # extract_tele = 'This is extract data'
-        analyse_tele = 'This is analysize_data'
-        choice = 'This is extract data'
-    else:
-        choice = request.GET.get('option', 'No option get!')
-#        extract_tele='这里显示提取报文的结果'
-        analyse_tele='这里显示解析报文的结果'
-    return render(request,'bali/analysizeTelegram.html',{'choice':choice,'analyse_tele':analyse_tele})
+    return render(request,'bali/analysizeTelegram.html',{})
 
+
+def extractTele(request):
+    choice = request.GET['choice']
+    localTelegram = request.GET['localTelegram']
+    if choice=='A4':
+        #todo,here get A4 read telegram
+        telegram = 'A4 Read Telegram'
+    elif choice=='A5':
+        #todo,here get A5 read telegram
+        telegram = 'A5 Read Telegram'
+    else:
+        telegram = localTelegram
+    return HttpResponse(telegram)
+
+def analysizeTele(request):
+    telegram = request.GET['telegram']
+    #todo,call python to analysize telegram
+    analysizeResult = telegram
+    return HttpResponse(analysizeResult)
+
+#
+#in analysizeTelegram.html, to extract and analysize the telegram
+#def myextract_tele(request):
+#    if request.method =='post':
+#        form = ExtractForm(request.POST)
+#        if form.is_valid():
+#            isA4 = False     
+#            isA5 = False 
+#            isLocalFile = True  
+#            filepath = "e://read.txt" #modify            
+#    else:
+#        form = ExtractForm()
+#    return render(request,'bali/analysizeTelegram.html',{'form':form})
+
+
+#def analysizeTelegram1(request):
+#    if request.method =='post':
+#        form = ExtractForm(request.POST)
+#        if form.is_valid():
+#            isA4 = form.cleaned_data['optionsRadios1']    
+#            isA5 = form.cleaned_data['option2']
+#            isLocalFile = form.cleaned_data['option3']  
+#            filepath = "e://read.txt" #modify            
+#    else:
+#        form = ExtractForm()
+#    return render(request,'bali/analysizeTelegram.html',{'form':form})
+
+#def analysizeTelegram(request):
+#    if request.method == 'POST':
+       # extract_tele = 'This is extract data'
+#        analyse_tele = 'This is analysize_data'
+#        choice = 'This is extract data'
+#    else:
+#        choice = request.GET.get('option', 'No option get!')
+#        extract_tele='这里显示提取报文的结果'
+#        analyse_tele='这里显示解析报文的结果'
+#    return render(request,'bali/analysizeTelegram.html',{'choice':choice,'analyse_tele':analyse_tele})
+#----------------------------------------------------------------
 
 
  #  return render(request,'bali/analysizeTelegram.html',{})

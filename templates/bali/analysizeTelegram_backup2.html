@@ -1,0 +1,86 @@
+{% extends "bali/base.html" %}
+{% load static %}
+
+{% block body_block %}
+
+<style type="text/css">
+    h1 {font-size:20px;}
+</style>
+
+
+<script type="text/javascript" >
+function baidu(){
+  var radios = document.getElementsByName("optionsRadios");
+  for ( var i = 0; i < radios.length; i++ ) {
+   if (radios[i].checked==true) {
+         i++;
+      alert("你选中的是第"+i+"个单选框。值为："+radios[--i].value);
+   }
+   }
+}
+</script>
+
+{{option}}
+{% with option=A5choice %}
+{% endwith %}
+
+
+  <div class="container aboutSection">
+    <div class="row">
+      <div class=" col-sm-6">
+        <h1><span>0.选择报文</span></h1>
+         <form class="form-inline" role="form" method='post'>
+           {%csrf_token%}
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="A4接口">A4接口
+          </label>
+        </div>
+        <br/>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="A5接口">A5接口
+          </label>
+        </div>
+        <br/>
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios3" value="本地文件">选择本地报文
+          <div class="form-group">
+            <label class="sr-only" for="name">名称</label>
+            <input type="text" class="form-control" id="name" placeholder="请选择本地报文">
+            <label class="sr-only" for="inputfile">文件输入</label>
+            <input type="file" id="inputfile">
+          </div>
+        </div>
+          <br/>
+          <br/>
+          <input type="submit" onClick="baidu()" value="提取并解析报文">
+        </form>
+        </input>
+            </label>
+
+        <!--button type="submit" class="btn btn-default">提取报文</button-->
+            <br/>
+            <br/>
+          <div>
+        <h1><span>1.提取报文</span></h1>
+            <label for="name">提取的报文</label>
+            <textarea class="form-control"  rows="8">{{choice}}</textarea>
+          </div>
+            </div>
+
+
+      <div class=" col-sm-6">
+        <h1><span>2.解析报文</span></h1>
+          <div>
+            <label for="name">报文解析的结果</label>
+            <textarea class="form-control" rows="20">{{analyse_tele}}</textarea>
+            <br/>
+          </div>
+      </div>
+    </div>
+
+    <br/>
+  </div>
+{% endblock %}

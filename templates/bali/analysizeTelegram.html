@@ -7,80 +7,186 @@
     h1 {font-size:20px;}
 </style>
 
-
-<script type="text/javascript" >
-function baidu(){
-  var radios = document.getElementsByName("optionsRadios");
-  for ( var i = 0; i < radios.length; i++ ) {
-   if (radios[i].checked==true) {
-         i++;
-      alert("你选中的是第"+i+"个单选框。值为："+radios[--i].value);
-   }
-   }
-}
-</script>
-
-{{option}}
-{% with option=A5choice %}
-{% endwith %}
-
-
   <div class="container aboutSection">
     <div class="row">
       <div class=" col-sm-6">
-        <h1><span>0.选择报文</span></h1>
-         <form class="form-inline" role="form" method='post'>
-           {%csrf_token%}
-        <div class="radio">
-          <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios1" value="A4接口">A4接口
-          </label>
-        </div>
-        <br/>
-        <div class="radio">
-          <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios2" value="A5接口">A5接口
-          </label>
-        </div>
-        <br/>
-        <div class="radio">
-            <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios3" value="本地文件">选择本地报文
-          <div class="form-group">
-            <label class="sr-only" for="name">名称</label>
-            <input type="text" class="form-control" id="name" placeholder="请选择本地报文">
-            <label class="sr-only" for="inputfile">文件输入</label>
-            <input type="file" id="inputfile">
-          </div>
-        </div>
-          <br/>
-          <br/>
-          <input type="submit" onClick="baidu()" value="提取并解析报文">
-        </form>
-        </input>
-            </label>
-
-        <!--button type="submit" class="btn btn-default">提取报文</button-->
-            <br/>
-            <br/>
-          <div>
         <h1><span>1.提取报文</span></h1>
+         <form role="form" action="/analysizeTelegram/extractTele/">
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">A4接口
+          </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">A5接口
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"checked="checked">选择本地报文
+       <!--form class="form-inline" role="form" action="/analysizeTelegram/extractTele/"-->
+        <div class="form-group">
+          <label class="sr-only" for="name">名称</label>
+          <!--input type="text" class="form-control" id="name" placeholder="请选择本地报文">
+          </input-->
+        <!--/div>
+        <div class="form-group"-->
+          <label class="sr-only" for="inputfile">文件输入</label>
+          <input type="file" id="inputfile" onchange="upload(this)">
+          </input>
+        </div>
+          </input>
+        </label>
+      </div>
+          <label for="name">本地报文</label>
+          <br/>
+          <textarea id="localTelegram" class="form-control" rows="6"></textarea>
+          <br/>
+          <button type="button" id="extractBtn"class="btn btn-default">提取报文</button>  
+          <br/>
+       <!--form role="form" action="/analysizeTelegram/extractTele/">
+          <div class="form-group">
+            <br/-->
+            <br/>
+            <!--label for="name">提取的报文</label-->
+         </form>
+
+           
+        <form role="form" action="/analysizeTelegram/analysizeTele/">
+            <!--button type="button" id="analysizeBtn" class="btn btn-default">解析报文</button-->
+            <textarea class="form-control" id="telegram" rows="6" readonly="readonly"></textarea>
+            <!--textarea class="form-control" id="analysizeResult" readonly="readonly" rows="1"></textarea>
+            <br/>
+            <button type="button" id="analysizeBtn" class="btn btn-default">解析报文</button-->
+          <!--/div-->
+        </form> 
+      </div>
+        <!--button type="submit" class="btn btn-default">提取报文</button>
+            <br/>
+            <br/>
+            <form role="form">
+          <div class="form-group">
             <label for="name">提取的报文</label>
-            <textarea class="form-control"  rows="8">{{choice}}</textarea>
+            <textarea id="localTelegram" class="form-control" rows="8"></textarea>
+        <button type="button" id="extractBtn" value="提取报文">
           </div>
-            </div>
+        </form>  
+            </div-->
 
 
       <div class=" col-sm-6">
         <h1><span>2.解析报文</span></h1>
-          <div>
-            <label for="name">报文解析的结果</label>
-            <textarea class="form-control" rows="20">{{analyse_tele}}</textarea>
+        <form role="form">
+          <div class="form-group">
+            <button type="button" id="analysizeBtn" class="btn btn-default">解析报文</button>
             <br/>
+            <br/>
+            <label for="name">报文解析的结果</label>
+            <textarea class="form-control" id="analysizeResult" readonly="readonly" rows="20"></textarea>
           </div>
+        </form>  
       </div>
     </div>
 
     <br/>
   </div>
+ 
+
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function()
+    {
+     //提取报文 
+      $("#extractBtn").click(function()
+      { 
+        var localTelegram;
+
+        var radios = document.getElementsByName("optionsRadios");
+        var choice;
+        for ( var i = 0; i < radios.length; i++ ) {
+            if (radios[i].checked==true) {
+            if(i==0) 
+            {
+            localTelegram = "";
+         //   document.getElementById("localTelegram").value="";
+            choice="A4";
+            }
+            if(i==1) 
+            {
+             localTelegram="";
+          //   document.getElementById("localTelegram").value="";
+              choice="A5";
+            }
+            if(i==2)
+            {
+            localTelegram = $("#localTelegram").val();
+            choice="local";
+            } 
+        }
+        }
+        
+        $.get("/analysizeTelegram/extractTele/",{'choice':choice,'localTelegram':localTelegram}, function(ret)
+            {
+            $('#telegram').html(ret)
+            })
+       });
+
+      //解析报文 
+      $("#analysizeBtn").click(function()
+      { 
+        var telegram = $("#telegram").val();
+        $.get("/analysizeTelegram/analysizeTele/",{'telegram':telegram}, function(ret)
+            {
+            $('#analysizeResult').html(ret)
+            })
+       });
+
+    });
+</script>
+
+<!--将本地文件内容显示到localTelegram本地文件上-->
+<script>  
+function upload(input) {  
+    //支持chrome IE10  
+   if (window.FileReader) 
+   {  
+        var file = input.files[0];  
+        filename = file.name.split(".")[0];  
+        var reader = new FileReader();  
+        reader.onload = function() 
+        {  
+        console.log(this.result)  
+        document.getElementById("localTelegram").value=this.result;
+       // alert(this.result);  
+        }  
+        reader.readAsText(file);  
+    }   
+    //支持IE 7 8 9 10  
+   else if (typeof window.ActiveXObject != 'undefined')
+   {  
+      var xmlDoc;   
+      xmlDoc = new ActiveXObject("Microsoft.XMLDOM");   
+      xmlDoc.async = false;   
+      xmlDoc.load(input.value);   
+     // alert(xmlDoc.xml);   
+      document.getElementById("localTelegram").value=xmlDoc.xml;
+   }
+                //支持FF  
+   else if (document.implementation && document.implementation.createDocument)
+   {   
+           var xmlDoc;   
+           xmlDoc = document.implementation.createDocument("", "", null);   
+           xmlDoc.async = false;   
+           xmlDoc.load(input.value);   
+           document.getElementById("localTelegram").value=xmlDoc.xml;
+         //  alert(xmlDoc.xml);  
+   } 
+   else 
+   {   
+            alert('error');   
+   }   
+}  
+</script>
+
 {% endblock %}

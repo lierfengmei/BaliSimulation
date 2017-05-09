@@ -20,7 +20,7 @@ from bali import views
 
 
 urlpatterns = [
-    url(r'^$',views.add,name="index"),
+    url(r'^$',views.index,name="index"),
     url(r'^faq/$',views.faq,name="faq"),
     url(r'^readBalise/$',views.show_data,name="show_data"),
     url(r'^intro/$',views.intro,name="intro"),
@@ -33,8 +33,11 @@ urlpatterns = [
     url(r'^about/$',views.about,name="about"),
     url(r'^readLEU/$',views.readLEU,name="readLEU"),
     url(r'^writeLEU/$',views.writeLEU,name="writeLEU"),
+
     url(r'^analysizeTelegram/$',views.analysizeTelegram,name="analysizeTelegram"),
-#    url(r'^analysizeTelegram/$',views.myextract_tele,name="myextract_tele"),
+    url(r'^analysizeTelegram/analysizeTele/$',views.analysizeTele,name="analysizeTelegram/analysizeTele"),
+    url(r'^analysizeTelegram/extractTele/$',views.extractTele,name="analysizeTelegram/extractTele"),
+
     url(r'^generateTelegram/$',views.generateTelegram,name="generateTelegram"),
     url(r'^testBaliseSwitch/$',views.testBaliseSwitch,name="testBaliseSwitch"),
     url(r'^testBaliseNoSwitch/$',views.testBaliseNoSwitch,name="testBaliseNoSwitch"),
