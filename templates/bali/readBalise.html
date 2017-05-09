@@ -8,43 +8,21 @@
 </style>
 
 
-<script type="text/JavaScript">
-<!--
+<!--script type="text/JavaScript">
  function ShowData()
 {
   document.getElementById('showdataID').value='123456';
 }
--->
-</script>
-
+</script-->
 
 
   <div class="container aboutSection">
     <div class="row">
       <div class=" col-sm-6">
         <h1><span>1.选择接口种类</span></h1>
-        <form method='post'>
-          {%csrf_token %}
-          {{myform}}
-          <input type="submit" value="提交">
-          <input type="submit" name="add" value="加法">
-          <input type="submit" name="minus" value="减法">
-        </form>
-        <div> This is the sum: {{data}}</div>
-    
-
-          
-        <input type="submit" value="显示" onclick="return ShowData();">
-        <textarea class="form-control" rows="8" id="showdataID"></textarea>
-
-
-
-
-
-
         <div class="radio">
           <label>
-            <input type="radio" name="opetionsRadios" id="opetionsRadios1" value="option1">A4接口
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="checked">A4接口
           </label>
         </div>
         <div class="radio">
@@ -54,17 +32,17 @@
         </div>
       </div>
       <div class=" col-sm-6">
-        <h1><span>4.选择对比的报文</span></h1>
+        <h1><span>3.选择对比的报文</span></h1>
         <form class="form-inline" role="form">
           <div class="form-group">
             <label class="sr-only" for="name">名称</label>
-            <input type="text" class="form-control" id="name" placeholder="请输入名称">
+            <!--input type="text" class="form-control" id="name" placeholder="请输入名称"-->
           </div>
           <div class="form-group">
             <label class="sr-only" for="inputfile">文件输入</label>
-            <input type="file" id="inputfile" >
+            <input type="file" id="inputfile"  onchange="upload(this)">
           </div>
-          <button type="submit" class="btn btn-default">提交</button>
+          <!--button type="submit" class="btn btn-default">提交</button-->
         </form>
       </div>   
     </div>
@@ -76,18 +54,18 @@
         <form role="form">
           <div class="form-group">
             <label for="name">读取的报文</label>
-            <textarea class="form-control" rows="8">{{data}}</textarea>
-            <button type="submit" class="btn btn-default">读取报文</button>
+            <textarea class="form-control" id="readTelegram" rows="8">{{data}}</textarea>
+            <button type="button" id="readBtn" class="btn btn-default">读取报文</button>
           </div>
         </form>  
       </div>
       <div class=" col-sm-6">
-        <h1><span style="">5.需要对比的报文</span></h1>
+        <h1><span style="">4.需要对比的报文</span></h1>
         <form role="form">
           <div class="form-group">
             <label for="name">对比的报文</label>
-            <textarea class="form-control" rows="8"></textarea>
-            <button type="submit" class="btn btn-default">对比</button>
+            <textarea class="form-control" id="compareTelegram" rows="8"></textarea>
+            <button type="button" id="compareBtn" class="btn btn-default">对比报文</button>
           </div>
         </form>  
       </div>
@@ -95,20 +73,20 @@
 
     <div class="row">
       <div class=" col-sm-6">
-        <h1><span>3.报文读取结果</span></h1>
+        <!--h1><span>3.报文读取结果</span></h1>
         <form role="form">
           <div class="form-group">
             <label for="name">报文读取结果</label>
-            <textarea class="form-control" rows="1"></textarea>
+            <textarea class="form-control" id="readResult" rows="1"readonly="readonly"></textarea>
           </div>
-        </form>  
+        </form-->  
       </div>
       <div class=" col-sm-6">
-        <h1><span>6.报文对比结果</span></h1>
+        <h1><span>5.报文对比结果</span></h1>
         <form role="form">
           <div class="form-group">
             <label for="name">报文对比结果</label>
-            <textarea class="form-control" rows="1"></textarea>
+            <textarea class="form-control" id="compareResult" rows="1"readonly="readonly"></textarea>
           </div>
         </form>  
       </div>
@@ -116,4 +94,95 @@
 
     <br/>
   </div>
+
+ 
+
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function()
+    {
+     //提取报文 
+      $("#readBtn").click(function()
+      { 
+        var localTelegram;
+
+        var radios = document.getElementsByName("optionsRadios");
+        var choice;
+        for ( var i = 0; i < radios.length; i++ ) {
+            if (radios[i].checked==true) {
+            if(i==0) choice="A4";
+            if(i==1) choice="A5";
+        }
+        }
+        
+        $.get("/readBalise/readTele/",{'choice':choice}, function(ret)
+            {
+            $('#readTelegram').html(ret)
+            })
+       });
+
+      //对比报文 
+      $("#compareBtn").click(function()
+      { 
+        var readTelegram = $("#readTelegram").val();
+        var compareTelegram = $("#compareTelegram").val();
+        $.get("/readBalise/compareTele/",{'readTelegram':readTelegram,'compareTelegram':compareTelegram}, function(ret)
+            {
+            $('#compareResult').html(ret)
+            })
+       });
+
+    });
+</script>
+
+
+
+<!--将本地文件内容显示到compareTele本地文件上-->
+<script>  
+function upload(input) {  
+    //支持chrome IE10  
+   if (window.FileReader) 
+   {  
+        var file = input.files[0];  
+        filename = file.name.split(".")[0];  
+        var reader = new FileReader();  
+        reader.onload = function() 
+        {  
+        console.log(this.result)  
+        document.getElementById("compareTelegram").value=this.result;
+       // alert(this.result);  
+        }  
+        reader.readAsText(file);  
+    }   
+    //支持IE 7 8 9 10  
+   else if (typeof window.ActiveXObject != 'undefined')
+   {  
+      var xmlDoc;   
+      xmlDoc = new ActiveXObject("Microsoft.XMLDOM");   
+      xmlDoc.async = false;   
+      xmlDoc.load(input.value);   
+     // alert(xmlDoc.xml);   
+      document.getElementById("compareTelegram").value=xmlDoc.xml;
+   }
+                //支持FF  
+   else if (document.implementation && document.implementation.createDocument)
+   {   
+           var xmlDoc;   
+           xmlDoc = document.implementation.createDocument("", "", null);   
+           xmlDoc.async = false;   
+           xmlDoc.load(input.value);   
+           document.getElementById("compareTelegram").value=xmlDoc.xml;
+         //  alert(xmlDoc.xml);  
+   } 
+   else 
+   {   
+            alert('error');   
+   }   
+}  
+</script>
+
+
+
+
+
 {% endblock %}

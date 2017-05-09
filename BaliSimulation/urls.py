@@ -22,10 +22,12 @@ from bali import views
 urlpatterns = [
     url(r'^$',views.index,name="index"),
     url(r'^faq/$',views.faq,name="faq"),
-    url(r'^readBalise/$',views.show_data,name="show_data"),
     url(r'^intro/$',views.intro,name="intro"),
     url(r'^operation/$',views.operation,name="operation"),
+
     url(r'^readBalise/$',views.readBalise,name="readBalise"),
+    url(r'^readBalise/readTele/$',views.readTele,name="readBalise/readTele"),
+    url(r'^readBalise/compareTele/$',views.compareTele,name="readBalise/compareTele"),
 
     url(r'^writeBalise/$',views.writeBalise,name="writeBalise"),
     url(r'^writeBalise/writeTele/$',views.writeTele,name="writeBalise/writeTele"),

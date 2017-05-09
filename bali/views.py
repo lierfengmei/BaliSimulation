@@ -3,16 +3,17 @@ from django.http import HttpResponse
 
 from .forms import AddForm
 from .forms import ExtractForm
-def extract_tele(request):
-    if request.method == 'post':
-        form = ExtractForm(request.POST)
-        if form.is_valid():
+
+#def extract_tele(request):
+#    if request.method == 'post':
+#        form = ExtractForm(request.POST)
+#        if form.is_valid():
             # todo ! to modify
-            extract_tele = "This is default telegram"
-            return render(request,'bali/analysizeTelegram.html',{'extract_tele':extract_tele,'form':form})
-    else:
-        form = ExtractForm()
-    return render(request,'bali/analysizeTelegram.html',{'form':form})
+     #      extract_tele = "This is default telegram"
+      #      return render(request,'bali/analysizeTelegram.html',{'extract_tele':extract_tele,'form':form})
+#    else:
+#        form = ExtractForm()
+#    return render(request,'bali/analysizeTelegram.html',{'form':form})
 
 def show_data(request):
     if request.method == 'post':
@@ -24,12 +25,6 @@ def show_data(request):
 def index(request):
     return render(request,'bali/index.html',{})
 
-
-def addAandB(a,b):
-    pass
-
-def minusAandB():
-    pass
 
 def add(request):
   #  show_data = "This is my default show data"
@@ -60,9 +55,29 @@ def intro(request):
 
 def operation(request):
     return render(request,'bali/operation.html',{})
+#---------读取报文处理函数---------------------------
 
 def readBalise(request):
     return render(request,'bali/readBalise.html',{})
+
+def readTele(request):
+    choice = request.GET['choice']
+    if choice=='A4':
+        #todo,here get A4 read telegram
+        readTelegram = 'A4 Read Telegram'
+    else:
+        #todo,here get A5 read telegram
+        readTelegram = 'A5 Read Telegram'
+    return HttpResponse(readTelegram)
+
+def compareTele(request):
+    readTelegram = request.GET['readTelegram']
+    compareTelegram = request.GET['compareTelegram']
+    if readTelegram==compareTelegram:
+        compareResult = "The telegrams are the same!"
+    else:
+        compareResult = "The telegram are not the same!"
+    return HttpResponse(compareResult)
 
 #----------写入报文处理函数--------------------------
 def writeBalise(request):
@@ -116,48 +131,7 @@ def analysizeTele(request):
     #todo,call python to analysize telegram
     analysizeResult = telegram
     return HttpResponse(analysizeResult)
-
-#
-#in analysizeTelegram.html, to extract and analysize the telegram
-#def myextract_tele(request):
-#    if request.method =='post':
-#        form = ExtractForm(request.POST)
-#        if form.is_valid():
-#            isA4 = False     
-#            isA5 = False 
-#            isLocalFile = True  
-#            filepath = "e://read.txt" #modify            
-#    else:
-#        form = ExtractForm()
-#    return render(request,'bali/analysizeTelegram.html',{'form':form})
-
-
-#def analysizeTelegram1(request):
-#    if request.method =='post':
-#        form = ExtractForm(request.POST)
-#        if form.is_valid():
-#            isA4 = form.cleaned_data['optionsRadios1']    
-#            isA5 = form.cleaned_data['option2']
-#            isLocalFile = form.cleaned_data['option3']  
-#            filepath = "e://read.txt" #modify            
-#    else:
-#        form = ExtractForm()
-#    return render(request,'bali/analysizeTelegram.html',{'form':form})
-
-#def analysizeTelegram(request):
-#    if request.method == 'POST':
-       # extract_tele = 'This is extract data'
-#        analyse_tele = 'This is analysize_data'
-#        choice = 'This is extract data'
-#    else:
-#        choice = request.GET.get('option', 'No option get!')
-#        extract_tele='这里显示提取报文的结果'
-#        analyse_tele='这里显示解析报文的结果'
-#    return render(request,'bali/analysizeTelegram.html',{'choice':choice,'analyse_tele':analyse_tele})
 #----------------------------------------------------------------
-
-
- #  return render(request,'bali/analysizeTelegram.html',{})
 
 def testBaliseSwitch(request):
     return render(request,'bali/testBaliseSwitch.html',{})
