@@ -32,9 +32,14 @@ urlpatterns = [
     url(r'^writeBalise/$',views.writeBalise,name="writeBalise"),
     url(r'^writeBalise/writeTele/$',views.writeTele,name="writeBalise/writeTele"),
 
+    url(r'^writeLEU/$',views.writeLEU,name="writeLEU"),
+    url(r'^writeLEU/writeTE1/$',views.writeTE1,name="writeLEU/writeTE1"),
+    url(r'^writeLEU/writeTPC/$',views.writeTPC,name="writeLEU/writeTPC"),
+    url(r'^writeLEU/writeTSE/$',views.writeTSE,name="writeLEU/writeTSE"),
+
+
     url(r'^about/$',views.about,name="about"),
     url(r'^readLEU/$',views.readLEU,name="readLEU"),
-    url(r'^writeLEU/$',views.writeLEU,name="writeLEU"),
 
     url(r'^analysizeTelegram/$',views.analysizeTelegram,name="analysizeTelegram"),
     url(r'^analysizeTelegram/analysizeTele/$',views.analysizeTele,name="analysizeTelegram/analysizeTele"),

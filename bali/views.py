@@ -4,17 +4,6 @@ from django.http import HttpResponse
 from .forms import AddForm
 from .forms import ExtractForm
 
-#def extract_tele(request):
-#    if request.method == 'post':
-#        form = ExtractForm(request.POST)
-#        if form.is_valid():
-            # todo ! to modify
-     #      extract_tele = "This is default telegram"
-      #      return render(request,'bali/analysizeTelegram.html',{'extract_tele':extract_tele,'form':form})
-#    else:
-#        form = ExtractForm()
-#    return render(request,'bali/analysizeTelegram.html',{'form':form})
-
 def show_data(request):
     if request.method == 'post':
         show_data = "This is the second default show data"
@@ -97,14 +86,35 @@ def writeTele(request):
     return HttpResponse(writeResult)
 #----------------------------------------------------
 
-
-
-def readLEU(request):
-    return render(request,'bali/readLEU.html',{})
+#--------写LEU相关函数-------------------------------
 
 def writeLEU(request):
     return render(request,'bali/writeLEU.html',{})
 
+def writeTE1(request):
+    write_tele = request.GET['write_tele']
+    #todo 把write_tele写入到LEU中并获取返回成果
+    Result = "TE1 write Success!"
+    return HttpResponse(Result)
+
+def writeTPC(request):
+    write_tele = request.GET['write_tele']
+    #todo 把write_tele写入到LEU中并获取返回成果
+    Result = "TPC write Success!"
+    return HttpResponse(Result)
+
+def writeTSE(request):
+    write_tele = request.GET['write_tele']
+    #todo 把write_tele写入到LEU中并获取返回成果
+    Result = "TSE write Success!"
+    return HttpResponse(Result)
+
+#--------------------------------------------------
+
+
+
+def readLEU(request):
+    return render(request,'bali/readLEU.html',{})
 def generateTelegram(request):
     return render(request,'bali/generateTelegram.html',{})
 
