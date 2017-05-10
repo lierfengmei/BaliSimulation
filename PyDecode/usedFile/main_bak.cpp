@@ -17,7 +17,22 @@ extern "C"
 {
 char*  Decode(char tele_ori[],char output[])
   {
+   
+
    mainOfCpp(tele_ori,output);
+  
+//   puts("C program output");
+//  puts(output);
+
+//    int i=0;
+//   for(i=0;i<20;i++)
+//  output[i]='A';
+// output[i]='\0'; 
+
+    //    puts("C program output"); 
+ //   for(int i=0;i<200;i++)
+  //   putchar(output[i]); 
+//output[20]='\0';
     return output;
   }
 }
@@ -81,45 +96,48 @@ int result = Analyse_Tele_Data_Get_TeleAndUsertele(src_data,des_tele,user_tele,p
 
 if(result==0) 
 {
-//cout<<"解析结果正常"<<endl;
-outputString += "Decoding Telegram Success!\n";
+cout<<"解析结果正常"<<endl;
+outputString += "解析结果正常\n";
 
 if(long_or_short==0)
 {
-outputString +="This is LONG telegram\n";
-//cout<<"这是长报文"<<endl;
+outputString +="这是长报文\n";
+cout<<"这是长报文"<<endl;
 } 
 else if(long_or_short==1)
 {
-outputString += "This is SHORT telegram\n";
-//cout<<"这是短报文"<<endl;
+outputString += "这是短报文\n";
+cout<<"这是短报文"<<endl;
 } 
 else
 {
-outputString +="This is neither LONG telegram nor SHORT telegram,Decoding FAILED!\n";  
-//cout<<"既不是长报文，也不是短报文，该解码出现了错误"<<endl;
+outputString +="既不是长报文，也不是短报文，该解码出现了错误\n";  
+cout<<"既不是长报文，也不是短报文，该解码出现了错误"<<endl;
 }
 
 
 
-//cout<<"报文数据长度为　"<<int(des_tele[0])<<endl;
+cout<<"报文数据长度为　"<<int(des_tele[0])<<endl;
 
 ostringstream oss;
 oss<<int(des_tele[0]);
 
-outputString +="The length of telegram Data is ";
+
+
+
+outputString +="报文数据长度为　";
 outputString += oss.str();
 outputString += '\n';
 
-outputString += "Telegram data is: ";
+outputString += "报文数据为: ";
 
-//cout<<"报文数据为:　"<<endl;
+cout<<"报文数据为:　"<<endl;
 PrintHex(des_tele+1,int(des_tele[0]),outputString);
 outputString += '\n';
-//cout<<endl;
+cout<<endl;
 
-outputString += "The user data is :\n";
-//cout<<"用户报文数组为: "<<endl;
+outputString += "用户报文数组为:\n";
+cout<<"用户报文数组为: "<<endl;
 
 PrintHex(user_tele,104,outputString);
 }
@@ -127,14 +145,14 @@ else
 {
   outputString += "result is";
   outputString += result;
-  outputString += "\nDecoding Error!\n";
+  outputString += "\n解析结果错误\n";
 
-   // cout<<"result is "<<result<<endl;  
-   // cout<<"解析结果错误"<<endl;
+    cout<<"result is "<<result<<endl;  
+    cout<<"解析结果错误"<<endl;
 }
 
 
-//cout<<"outputString is :"<<outputString<<endl;
+cout<<"outputString is :"<<outputString<<endl;
 
   for(int i=0;i<strlen(outputString.c_str());i++)
   {
@@ -179,7 +197,7 @@ void PrintHex(const byte* data,const int length,string& outputString)
   }
   des_data[j]='\0';
 
-//  cout<<des_data<<endl;
+  cout<<des_data<<endl;
   outputString += des_data;
   outputString += '\n';
 }

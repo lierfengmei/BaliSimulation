@@ -17,7 +17,22 @@ extern "C"
 {
 char*  Decode(char tele_ori[],char output[])
   {
+   
+
    mainOfCpp(tele_ori,output);
+  
+//   puts("C program output");
+//  puts(output);
+
+//    int i=0;
+//   for(i=0;i<20;i++)
+//  output[i]='A';
+// output[i]='\0'; 
+
+    //    puts("C program output"); 
+ //   for(int i=0;i<200;i++)
+  //   putchar(output[i]); 
+//output[20]='\0';
     return output;
   }
 }

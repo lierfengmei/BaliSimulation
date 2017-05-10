@@ -2,28 +2,25 @@
 #include <iostream>
 #include <string.h>
 #include <assert.h>
-#include <sstream>
-#include <iostream>
-#include <stdio.h>
+
 
 using namespace std;
 
 bool isLegalChar(const char ch);
 int toXNum(const char ch);
-void PrintHex(const byte* data,const int length,string& outputString);
-int mainOfCpp(char tele_ori[],char output[]);
+void PrintHex(const byte* data,const int length);
+int mainOfCpp(char tele_ori[]);
 
 extern "C"
 {
-char*  Decode(char tele_ori[],char output[])
+  int Decode(char tele_ori[])
   {
-   mainOfCpp(tele_ori,output);
-    return output;
+    mainOfCpp(tele_ori);
   }
 }
 
 
-int mainOfCpp(char tele_ori[],char output[])
+int mainOfCpp(char tele_ori[])
 {
 //解析报文
 //  Analyse_Usertele_Info(ANALYSE_USERTELE_BALISE_A4,user_tele,len_usertele,tele,len_tele);
@@ -44,7 +41,6 @@ int mainOfCpp(char tele_ori[],char output[])
 //返回值：0 正常；非0 ：错误
 
 
-string outputString="";
 int i=0,j=0;
 /*
 char tele_ori[]=" 98 3B E6 32 7B 23 75 ED 96 19 46 9A 3D 0E F2 A6 3D 2D 7C 37 88 CD F7 77  C3 DD EB D1 82 65 A7 F5 22 D4 BB D4 75 3A DC 4D 34 2F 5E 63 91 C7 B3 92 96 BA 7D 7B EC DB 14 2F 24 5C 87 F8 EA 7D 3E 0D 2B F6 F2 F1 AB 99 5B 7E DF 45 3C 41 3C AE 77 C2 3B E9 7C 47 5A 7D F2 C5 5D 49 AA F3 30 6774 FC4A C7 59 F2 D9 ED 5E F9 13 E2 E6 17 85 92 CD 7B 0F D9 10 1B 51 67 29 2F  B5 DF 89 B8 AC DE DA 7C";
@@ -81,67 +77,25 @@ int result = Analyse_Tele_Data_Get_TeleAndUsertele(src_data,des_tele,user_tele,p
 
 if(result==0) 
 {
-//cout<<"解析结果正常"<<endl;
-outputString += "Decoding Telegram Success!\n";
+cout<<"解析结果正常"<<endl;
 
-if(long_or_short==0)
-{
-outputString +="This is LONG telegram\n";
-//cout<<"这是长报文"<<endl;
-} 
-else if(long_or_short==1)
-{
-outputString += "This is SHORT telegram\n";
-//cout<<"这是短报文"<<endl;
-} 
-else
-{
-outputString +="This is neither LONG telegram nor SHORT telegram,Decoding FAILED!\n";  
-//cout<<"既不是长报文，也不是短报文，该解码出现了错误"<<endl;
-}
+if(long_or_short==0) cout<<"这是长报文"<<endl;
+else if(long_or_short==1) cout<<"这是短报文"<<endl;
+else cout<<"既不是长报文，也不是短报文，该解码出现了错误"<<endl;
 
+cout<<"报文数据长度为　"<<int(des_tele[0])<<endl;
+cout<<"报文数据为：　"<<endl;
+PrintHex(des_tele+1,int(des_tele[0]));
 
-
-//cout<<"报文数据长度为　"<<int(des_tele[0])<<endl;
-
-ostringstream oss;
-oss<<int(des_tele[0]);
-
-outputString +="The length of telegram Data is ";
-outputString += oss.str();
-outputString += '\n';
-
-outputString += "Telegram data is: ";
-
-//cout<<"报文数据为:　"<<endl;
-PrintHex(des_tele+1,int(des_tele[0]),outputString);
-outputString += '\n';
-//cout<<endl;
-
-outputString += "The user data is :\n";
-//cout<<"用户报文数组为: "<<endl;
-
-PrintHex(user_tele,104,outputString);
+cout<<endl;
+cout<<"用户报文数组为: "<<endl;
+PrintHex(user_tele,104);
 }
 else
 {
-  outputString += "result is";
-  outputString += result;
-  outputString += "\nDecoding Error!\n";
-
-   // cout<<"result is "<<result<<endl;  
-   // cout<<"解析结果错误"<<endl;
+    cout<<"result is "<<result<<endl;  
+    cout<<"解析结果错误"<<endl;
 }
-
-
-//cout<<"outputString is :"<<outputString<<endl;
-
-  for(int i=0;i<strlen(outputString.c_str());i++)
-  {
-    output[i] = outputString[i];
-  }
-  output[i]='\0';
-
 
   return 0;
 }
@@ -162,7 +116,7 @@ int toXNum(const char ch)
   if(ch>='a'&&ch<='f') return(ch-'a'+10);
 }
 
-void PrintHex(const byte* data,const int length,string& outputString)
+void PrintHex(const byte* data,const int length)
 {
   int i=0;
   int a=0,b=0;
@@ -179,7 +133,5 @@ void PrintHex(const byte* data,const int length,string& outputString)
   }
   des_data[j]='\0';
 
-//  cout<<des_data<<endl;
-  outputString += des_data;
-  outputString += '\n';
+  cout<<des_data<<endl;
 }
