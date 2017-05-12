@@ -1,0 +1,6 @@
+http://www.crifan.com/files/doc/docbook/python_topic_str_encoding/release/htmls/
+调用过程中的主要问题是编码问题，unicode，utf-8等等问题。
+
+以及解码/解析
+因为可以脱离硬件去修改，所以这个问题留着周末解决，注意，周末一定要解决！！！
+http://stackoverflow.com/questions/688760/how-to-create-a-utf-8-string-literal-in-visual-c-2008
