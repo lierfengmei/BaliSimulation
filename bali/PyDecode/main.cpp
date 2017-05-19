@@ -13,18 +13,35 @@ int toXNum(const char ch);
 void PrintHex(const byte* data,const int length,string& outputString);
 int mainOfCpp(char tele_ori[],char output[]);
 
+char OOO[100];
+  
 extern "C"
 {
-char*  Decode(char tele_ori[],char output[])
+ // char OOO[100];
+void  Decode(char* tele_ori,char* output)
   {
-   mainOfCpp(tele_ori,output);
-   int i=0; 
+//    char out[2000];
+    
+ //  mainOfCpp(tele_ori,out);
+/*   int i=0; 
    for(i=0;i<10;i++)
-     output[i]=b'A';
+     output[i]='A';
    output[i]='\0';
- //  output="aaa";
    cout<<output<<endl;
-    return output;
+  */  
+   sprintf(output,"%s","I love Beijing Tian anmen anmen qian tai yang sheng ");
+
+/*
+   for(i=0;i<10;i++)
+     OOO[i]='B';
+   OOO[i]='\0';
+
+   cout<<OOO<<endl;
+
+   return OOO;
+*/
+
+   // return output;
   }
 }
 
