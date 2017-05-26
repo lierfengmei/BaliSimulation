@@ -11,25 +11,25 @@ using namespace std;
 bool isLegalChar(const char ch);
 int toXNum(const char ch);
 void PrintHex(const byte* data,const int length,string& outputString);
-int mainOfCpp(char tele_ori[],char output[]);
+int mainOfCpp(char tele_ori[],char output[],char output2[]);
 
-char OOO[100];
+//char OOO[100];
   
 extern "C"
 {
- // char OOO[100];
-void  Decode(char* tele_ori,char* output)
+void  Decode(char* tele_ori,char* output,char *output2)
   {
-//    char out[2000];
-    
- //  mainOfCpp(tele_ori,out);
-/*   int i=0; 
-   for(i=0;i<10;i++)
-     output[i]='A';
-   output[i]='\0';
-   cout<<output<<endl;
-  */  
-   sprintf(output,"%s","I love Beijing Tian anmen anmen qian tai yang sheng ");
+    char out[2000];
+
+//    cout<<"tele_ori is"<<endl<<tele_ori<<endl;
+
+   mainOfCpp(tele_ori,output,output2);
+
+ // cout<<"OUT is"<<endl;
+ //cout<<out<<endl; 
+
+// strcpy(output,out);
+// sprintf(output,"%s","I love Beijing Tian anmen anmen qian tai yang sheng \n This is in Decode function");
 
 /*
    for(i=0;i<10;i++)
@@ -47,7 +47,7 @@ void  Decode(char* tele_ori,char* output)
 
 
 
-int mainOfCpp(char tele_ori[],char output[])
+int mainOfCpp(char tele_ori[],char output[],char output2[])
 {
 //解析报文
 //  Analyse_Usertele_Info(ANALYSE_USERTELE_BALISE_A4,user_tele,len_usertele,tele,len_tele);
@@ -70,8 +70,9 @@ int mainOfCpp(char tele_ori[],char output[])
 /*
 char tele_ori[]=" 98 3B E6 32 7B 23 75 ED 96 19 46 9A 3D 0E F2 A6 3D 2D 7C 37 88 CD F7 77  C3 DD EB D1 82 65 A7 F5 22 D4 BB D4 75 3A DC 4D 34 2F 5E 63 91 C7 B3 92 96 BA 7D 7B EC DB 14 2F 24 5C 87 F8 EA 7D 3E 0D 2B F6 F2 F1 AB 99 5B 7E DF 45 3C 41 3C AE 77 C2 3B E9 7C 47 5A 7D F2 C5 5D 49 AA F3 30 6774 FC4A C7 59 F2 D9 ED 5E F9 13 E2 E6 17 85 92 CD 7B 0F D9 10 1B 51 67 29 2F  B5 DF 89 B8 AC DE DA 7C";
 */
-  /*
+
 string outputString="";
+string outputString2="";
 int i=0,j=0;
 
 byte src_data[130];
@@ -143,10 +144,10 @@ PrintHex(des_tele+1,int(des_tele[0]),outputString);
 outputString += '\n';
 //cout<<endl;
 
-outputString += "The user data is :\n";
+outputString2 += "The user data is :\n";
 //cout<<"用户报文数组为: "<<endl;
 
-PrintHex(user_tele,104,outputString);
+PrintHex(user_tele,104,outputString2);
 }
 else
 {
@@ -166,7 +167,13 @@ else
     output[i] = outputString[i];
   }
   output[i]='\0';
-*/
+
+
+  for(int i=0;i<strlen(outputString2.c_str());i++)
+  {
+    output2[i] = outputString2[i];
+  }
+  output2[i]='\0';
 
   return 0;
 }

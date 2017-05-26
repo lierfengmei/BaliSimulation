@@ -22,7 +22,7 @@ api.arrtest(byref(name))
 
 #print(name.decode('utf-8'))
 
-print(name.value)
+print(name.value.decode('utf-8'))
 
 #for t in names:
 #    print (t.decode('utf-8'))
