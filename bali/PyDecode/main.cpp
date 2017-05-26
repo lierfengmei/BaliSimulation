@@ -13,35 +13,12 @@ int toXNum(const char ch);
 void PrintHex(const byte* data,const int length,string& outputString);
 int mainOfCpp(char tele_ori[],char output[],char output2[]);
 
-//char OOO[100];
   
 extern "C"
 {
 void  Decode(char* tele_ori,char* output,char *output2)
   {
-    char out[2000];
-
-//    cout<<"tele_ori is"<<endl<<tele_ori<<endl;
-
-   mainOfCpp(tele_ori,output,output2);
-
- // cout<<"OUT is"<<endl;
- //cout<<out<<endl; 
-
-// strcpy(output,out);
-// sprintf(output,"%s","I love Beijing Tian anmen anmen qian tai yang sheng \n This is in Decode function");
-
-/*
-   for(i=0;i<10;i++)
-     OOO[i]='B';
-   OOO[i]='\0';
-
-   cout<<OOO<<endl;
-
-   return OOO;
-*/
-
-   // return output;
+    mainOfCpp(tele_ori,output,output2);
   }
 }
 
@@ -126,8 +103,6 @@ outputString +="This is neither LONG telegram nor SHORT telegram,Decoding FAILED
 //cout<<"既不是长报文，也不是短报文，该解码出现了错误"<<endl;
 }
 
-
-
 //cout<<"报文数据长度为　"<<int(des_tele[0])<<endl;
 
 ostringstream oss;
@@ -137,7 +112,7 @@ outputString +="The length of telegram Data is ";
 outputString += oss.str();
 outputString += '\n';
 
-outputString += "Telegram data is: ";
+outputString += "\nTelegram data is: ";
 
 //cout<<"报文数据为:　"<<endl;
 PrintHex(des_tele+1,int(des_tele[0]),outputString);
