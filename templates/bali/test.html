@@ -19,63 +19,66 @@
             <img src="{% static "images/icon3.png"%}" alt="Generic placeholder image">
         </div>
         <h3 class="text_center">应答器测试</h3>
-        <p class="text_center">这是应答器测试的介绍。这是应答器测试的介绍。这是应答器测试的介绍。这是应答器测试的介绍。这是应答器测试的介绍。这是应答器测试的介绍。这是应答器测试的介绍。这是应答器测试的介绍。</p>
-      </div>
+        <p>应答器测试包括切换报文与不切换报文两部分，主要是选取列控中心报文模拟列控中心发送报文，然后模拟车载天线接收报文，并检测从应答器读取的报文是否和发送的报文一致，从而进行应答器测试。</p>
+	  </div>
 
       <div class=" col-sm-3 homePageIconDiv rightBorder">
         <div class="homePageIcon">
             <img src="{% static "images/icon2.png" %}" alt="Generic placeholder image">
         </div>
         <h3 class="text_center">应答器报文生成解析</h3>
-        <p class="text_center">这是应答器报文解析的介绍。这是应答器报文解析的介绍。这是应答器报文解析的介绍。这是应答器报文解析的介绍。这是应答器报文解析的介绍。这是应答器报文解析的介绍。这是应答器报文解析的介绍。这是应答器报文解析的介绍。</p>
-      </div>
+        <p>包括应答器报文生成与应答器报文解析两部分。通过信息设置或者默认设置可以生成报文；对从A4读或者A5读的报文，可以进行解码和解析功能。</p>
+	  </div>
 
       <div class="col-sm-3 homePageIconDiv rightBorder">
         <div class="homePageIcon">
-            <img src="{% static "images/icon1.png" %}" alt="Generic placeholder image">
+            <img src="{% static "images/icon1.png" %}" alt="Generic placeholder image" style="margin-top: 34px;">
         </div>
-        <h3 class="text_center">应答器报文读写</h3>
-        <p class="text_center">这是应答器报文读写的介绍。这是应答器报文读写的介绍。这是应答器报文读写的介绍。这是应答器报文读写的介绍。这是应答器报文读写的介绍。这是应答器报文读写的介绍。这是应答器报文读写的介绍。</p>
-      </div>
+         <h3 class="text_center">LEU报文读写</h3>
+		<p>包括了应答器报文读取和应答器报文写入两部分功能。应答器报文读取是从A4或者A5接口读出报文，并可以选择本地报文进行对比。应答器报文写入则是将本地报文通过A4或A5方式写入应答器。</p>
+    </div>
+       <!--h3 class="text_center">应答器报文读写</h3>
+        <p>应答器报文读写主要包括了应答器报文读取和应答器报文写入两部分功能。应答器报文读取是从A4或者A5接口中读出报文，并且可以选择本地报文进行对比。应答器报文写入则是将本地报文通过A4或A5方式写入应答器中。</p>
+      </div-->
 
       <div class="col-sm-3 homePageIconDiv">
         <div class="homePageIcon">
             <img src="{% static "images/icon4.png" %}" alt="Generic placeholder image" style="margin-top: 34px;">
         </div>
         <h3 class="text_center">LEU报文读写</h3>
-        <p class="text_center">这是LEU报文读写的介绍。这是LEU报文读写的介绍。这是LEU报文读写的介绍。这是LEU报文读写的介绍。这是LEU报文读写的介绍。这是LEU报文读写的介绍。这是LEU报文读写的介绍。这是LEU报文读写的介绍。这是LEU报文读写的介绍。这是LEU报文读写的介绍。这是LEU报文读写的介绍。</p>
+		<p>LEU报文读写包括LEU报文读取和LEU报文写入两部分。其中LEU报文写入是可以选择本地的TE1文件/TPC文件/TSE文件进行LEU的报文写入工作，并且返回写入结果。</p>
     </div>
 
     <div class="row operationBtnSection" style="text-align: center;">
       <div class="col-sm-3 homePageIconDiv rightBorder">
-          <a class="btn btn-primary btn-lg" href="{% url "testBaliseNoSwitch"%}">应答器测试（不切换报文）<em class="glyphicon glyphicon-chevron-right"></em> </a>
+          <a class="btn btn-primary btn-lg" disabled="disabled"  href="{% url "testBaliseNoSwitch"%}">应答器测试（不切换报文）</a>
         <br/>
         <br/>
-        <a class="btn btn-info btn-lg" href="{% url "testBaliseSwitch"%}">应答器测试（切换报文）<em class="glyphicon glyphicon-chevron-right"></em> </a>
-        <br/>
-      </div>
-
-      <div class="col-sm-3 homePageIconDiv rightBorder">
-          <a class="btn btn-primary btn-lg" href="{% url "generateTelegram" %}">应答器报文生成<em class="glyphicon glyphicon-chevron-right"></em> </a>
-        <br/>
-        <br/>
-        <a class="btn btn-info btn-lg" href="{% url "analysizeTelegram" %}">应答器报文解析<em class="glyphicon glyphicon-chevron-right"></em> </a>
+        <a class="btn btn-info btn-lg" disabled="disabled" href="{% url "testBaliseSwitch"%}">应答器测试（切换报文）</a>
         <br/>
       </div>
 
       <div class="col-sm-3 homePageIconDiv rightBorder">
-          <a class="btn btn-primary btn-lg" href="{% url "readBalise" %}">应答器报文读取<em class="glyphicon glyphicon-chevron-right"></em> </a>
+          <a class="btn btn-primary btn-lg" href="{% url "generateTelegram" %}">应答器报文生成 </a>
         <br/>
         <br/>
-        <a class="btn btn-info btn-lg" href="{% url "writeBalise" %}">应答器报文写入<em class="glyphicon glyphicon-chevron-right"></em> </a>
+        <a class="btn btn-info btn-lg" href="{% url "analysizeTelegram" %}">应答器报文解析 </a>
         <br/>
       </div>
 
       <div class="col-sm-3 homePageIconDiv rightBorder">
-          <a class="btn btn-primary btn-lg" href="{% url "readLEU"%}">LEU报文读取<em class="glyphicon glyphicon-chevron-right"></em> </a>
+          <a class="btn btn-primary btn-lg" href="{% url "readBalise" %}">应答器报文读取</a>
         <br/>
         <br/>
-        <a class="btn btn-info btn-lg" href="{%url "writeLEU"%}">LEU报文写入<em class="glyphicon glyphicon-chevron-right"></em> </a>
+        <a class="btn btn-info btn-lg" href="{% url "writeBalise" %}">应答器报文写入</a>
+        <br/>
+      </div>
+
+      <div class="col-sm-3 homePageIconDiv rightBorder">
+          <a class="btn btn-primary btn-lg" href="{% url "readLEU"%}">LEU报文读取</a>
+        <br/>
+        <br/>
+        <a class="btn btn-info btn-lg" href="{%url "writeLEU"%}">LEU报文写入</a>
         <br/>
       </div>
   </div>
