@@ -49,17 +49,26 @@
         </form> 
       </div>
               <div class=" col-sm-6">
-        <h1><span>2.解析报文</span></h1>
+        <h1><span>2.解码报文</span></h1>
+        <form role="form">
+          <div class="form-group">
+            <button type="button" id="DecodeBtn" class="btn btn-default">解码报文</button>
+            <br/>
+            <!--label for="name">报文解码的结果</label-->
+            <textarea class="form-control" id="DecodeResult" readonly="readonly" rows="8"></textarea>
+          </div>
+        </form>  
+		<h1><span>3.解析报文</span></h1>
         <form role="form">
           <div class="form-group">
             <button type="button" id="analysizeBtn" class="btn btn-default">解析报文</button>
             <br/>
-            <br/>
-            <label for="name">报文解析的结果</label>
-            <textarea class="form-control" id="analysizeResult" readonly="readonly" rows="20"></textarea>
+            <!--label for="name">报文解析的结果</label-->
+            <textarea class="form-control" id="analysizeResult" readonly="readonly" rows="8"></textarea>
           </div>
-        </form>  
-      </div>
+        </form> 
+     
+			  </div>
     </div>
 
     <br/>
@@ -105,13 +114,13 @@
             })
        });
 
-      //解析报文 
-      $("#analysizeBtn").click(function()
+      //解码报文 
+      $("#DecodeBtn").click(function()
       { 
         var telegram = $("#telegram").val();
         $.get("/analysizeTelegram/analysizeTele/",{'telegram':telegram}, function(ret)
             {
-            $('#analysizeResult').html(ret)
+            $('#DecodeResult').html(ret)
             })
        });
 
